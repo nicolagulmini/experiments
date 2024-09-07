@@ -1,11 +1,25 @@
 from typing import Union, Annotated
 from fastapi import FastAPI, Query, File, UploadFile
 
+classes = [
+    "T-shirt/top",
+    "Trouser",
+    "Pullover",
+    "Dress",
+    "Coat",
+    "Sandal",
+    "Shirt",
+    "Sneaker",
+    "Bag",
+    "Ankle boot",
+]
 
 import wrapper # separation of concerns
+import cache
 
 app = FastAPI()
 model = wrapper.Wrap()
+LRUcache = cache.Cache(3)
 
 @app.post("/upload")
 def upload(file: UploadFile = File(...)):
@@ -17,4 +31,10 @@ def upload(file: UploadFile = File(...)):
         return {"message": "There was an error uploading the file"}
     finally:
         file.file.close()
-    return model.eval(contents)
+    hashedImage = hash(contents)
+    class_ = LRUcache.get(hashedImage)
+    if class_ == -1: 
+        class_ = model.eval(contents)
+        LRUcache.insert(hashedImage, class_)
+    print(LRUcache.cache)
+    return {'Predicted class:': classes[class_]}

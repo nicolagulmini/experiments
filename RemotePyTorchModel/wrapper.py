@@ -5,18 +5,6 @@ import io
 import PIL.Image as Image
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-classes = [
-    "T-shirt/top",
-    "Trouser",
-    "Pullover",
-    "Dress",
-    "Coat",
-    "Sandal",
-    "Shirt",
-    "Sneaker",
-    "Bag",
-    "Ankle boot",
-]
 
 class Wrap():
 	def __init__(self):
@@ -40,4 +28,4 @@ class Wrap():
 		    predicted_class = torch.argmax(output, dim=1).item()
 
 		# Print the predicted class
-		return {'Predicted class:': classes[predicted_class]}
+		return predicted_class

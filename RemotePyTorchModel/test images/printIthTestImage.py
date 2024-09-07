@@ -12,12 +12,14 @@ training_set = torchvision.datasets.FashionMNIST('./data', train=True, transform
 classes = ('T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
         'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Boot')
 
+i = 3
+
 fig = plt.figure(frameon=False)
 fig.set_size_inches(28/100, 28/100)
 ax = plt.Axes(fig, [0., 0., 1., 1.])
 ax.set_axis_off()
 fig.add_axes(ax)
-ax.imshow(training_set[0][0][0], aspect='auto', cmap='grey')
-fig.savefig('test.png', dpi=100)
+ax.imshow(training_set[i][0][0], aspect='auto', cmap='grey')
+fig.savefig("test"+str(i)+".png", dpi=100)
 
-print('class is:', classes[training_set[0][1]])
+print('class is:', classes[training_set[i][1]])

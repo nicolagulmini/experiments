@@ -1,5 +1,3 @@
-Sì, possiamo formalizzare il concetto che "un karma positivo in uscita garantisce un karma positivo medio in entrata nel futuro" utilizzando un modello matematico basato su un grafo orientato, dove il karma viene trasferito tra nodi (che rappresentano individui o entità) nel tempo.
-
 ### Formalizzazione Matematica
 
 #### Definizioni:

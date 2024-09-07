@@ -3,7 +3,7 @@
 #### Definizioni:
 - **Grafo Diretto \( G = (V, E) \)**: Dove \( V \) è l'insieme dei nodi e \( E \) è l'insieme degli archi orientati. Un arco \( (i, j) \in E \) indica che c'è un flusso di karma dal nodo \( i \) al nodo \( j \).
   
-- **Karma $ k_i(t) $**: Il punteggio di karma del nodo \( i \) al tempo \( t \).
+- **Karma $k_i(t)$**: Il punteggio di karma del nodo \( i \) al tempo \( t \).
 
 - **Flusso di Karma \( f_{ij}(t) \)**: La quantità di karma trasferito dal nodo \( i \) al nodo \( j \) al tempo \( t \).
 

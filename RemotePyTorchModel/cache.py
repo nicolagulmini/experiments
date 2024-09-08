@@ -1,28 +1,48 @@
-class Cache():
-	# very fast way to prototype a cache... should fix some optimization and error handling issues
-	def __init__(self, n):
-		self.cache = []
-		# cache is a list of items, which are list of 2 elements: a couple (a list of 2 elements, key value pairs)
-		# and a number, which is the query frequency of the key [[key, value], f]
-		self.sizeLimit = n 
+class CacheItem:
+    def __init__(self, key, value, timestamp):
+        self.key = key
+        self.value = value
+        self.frequency = 1
+        self.timestamp = timestamp  # Used to track aging
 
-	def insert(self, hashedKey, value):
-		keyValuePair = [hashedKey, value]
-		self.cache = self.cache[:self.sizeLimit-1]
-		for el in self.cache:
-			el[1] -= 1
-		self.cache.append([keyValuePair, 1])
-		self.__sortCacheByPriority()
+class Cache:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.cache = []
+        self.time = 0  # Global time counter to handle aging
 
-	def get(self, key):
-		toReturn = -1
-		for el in self.cache:
-			if el[0][0] == key: 
-				toReturn = el[0][1]
-				el[1] += 1
-				break
-		self.__sortCacheByPriority()
-		return toReturn
+    def insert(self, key, value):
+        self.time += 1  # Increment the global time with every operation
 
-	def __sortCacheByPriority(self):
-		self.cache.sort(key=lambda x: x[1], reverse=True)
+        # Check if key already exists in cache, update if it does
+        for item in self.cache:
+            if item.key == key:
+                item.value = value
+                item.frequency += 1
+                item.timestamp = self.time  # Update timestamp to the current time
+                self.__sortCacheByPriority()
+                return
+
+        # If cache is full, remove the least frequent item
+        if len(self.cache) >= self.capacity:
+            self.cache.pop()
+
+        # Insert new item
+        new_item = CacheItem(key, value, self.time)
+        self.cache.append(new_item)
+        self.__sortCacheByPriority()
+
+    def get(self, key):
+        self.time += 1  # Increment the global time with every operation
+
+        for item in self.cache:
+            if item.key == key:
+                item.frequency += 1
+                item.timestamp = self.time  # Update timestamp to refresh priority
+                self.__sortCacheByPriority()
+                return item.value
+        return -1  # Key not found
+
+    def __sortCacheByPriority(self):
+        # Sort by frequency first, then by timestamp (older items with the same frequency will be deprioritized)
+        self.cache.sort(key=lambda x: (x.frequency, x.timestamp), reverse=True)

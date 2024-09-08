@@ -25,8 +25,6 @@ LRUcache = cache.Cache(3)
 def upload(file: UploadFile = File(...)):
     try:
         contents = file.file.read()
-        with open(file.filename, 'wb') as f:
-            f.write(contents)
     except Exception:
         return {"message": "There was an error uploading the file"}
     finally:
@@ -36,5 +34,5 @@ def upload(file: UploadFile = File(...)):
     if class_ == -1: 
         class_ = model.eval(contents)
         LRUcache.insert(hashedImage, class_)
-    print(LRUcache.cache)
+    print([(el.key, el.value) for el in LRUcache.cache])
     return {'Predicted class:': classes[class_]}

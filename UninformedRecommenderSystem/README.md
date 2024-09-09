@@ -1,3 +1,8 @@
-I've never implemented a recommender system. I want to try implementing one without watching any tutorial. I think it might be a good exercise for me. I'll start with some ideas and then try to obtain good results. I want to track my progresses here and then watch some solutions to see how and where I can improve.
-Another rule I'll auto-impose is: it is forbidden to use Tensorflow.
-I'll start with the Movie Lens dataset.
+Project Overview
+I have never implemented a recommender system before, and this is my attempt to create one from scratch without following any tutorials or external guides. I believe this will be a valuable learning exercise, allowing me to explore my own ideas and strategies. My goal is to document my progress here and later compare my solution to more established methods to identify areas for improvement.
+
+Rules
+
+I will not use TensorFlow or any other pre-built recommendation frameworks.
+The recommender system will be built using the MovieLens dataset as a starting point.
+I will update this repository with my findings, challenges, and improvements as I progress.

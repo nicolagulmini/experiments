@@ -1,4 +1,5 @@
 Project Overview
+
 I have never implemented a recommender system before, and this is my attempt to create one from scratch without following any tutorials or external guides. I believe this will be a valuable learning exercise, allowing me to explore my own ideas and strategies. My goal is to document my progress here and later compare my solution to more established methods to identify areas for improvement.
 
 Rules

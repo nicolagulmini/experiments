@@ -1,0 +1,3 @@
+I've never implemented a recommender system. I want to try implementing one without watching any tutorial. I think it might be a good exercise for me. I'll start with some ideas and then try to obtain good results. I want to track my progresses here and then watch some solutions to see how and where I can improve.
+Another rule I'll auto-impose is: it is forbidden to use Tensorflow.
+I'll start with the Movie Lens dataset.

@@ -1,4 +1,6 @@
-This repository contains a variety of small and experimental projects that I’ve worked on to explore different technologies, learn new skills, or simply bring an idea to life. Here’s a brief overview of the projects included:
+This repository contains a variety of small and experimental projects that I’ve worked on to explore different technologies, learn new skills, or simply bring an idea to life. 
+
+Here’s a brief overview of the projects included:
 
 - EconoGraph: A simulation project for economic data, designed to model and analyze economic systems and behaviors.
 - KarmaGraph: A project that simulates the concept of Karma in a social network, exploring how reputation systems can be modeled and interacted with.

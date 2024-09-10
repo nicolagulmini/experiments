@@ -45,9 +45,8 @@ If you'd like to change the URLs that the extension opens, you can:
 
 ```javascript
 const urls = [
-  "https://www.example.com",
   "https://www.google.com",
-  "https://www.openai.com"
+  "https://www.github.com"
 ];
 ```
 

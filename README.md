@@ -8,5 +8,10 @@ Here’s a brief overview of the projects included:
 - ScrapingGuitars: A web scraping tool designed to extract data about guitars from various online sources for analysis or comparison.
 - UninformedRecommenderSystem: A work-in-progress project to implement a recommender system from scratch, without referring to tutorials, to explore recommendation algorithms and techniques.
 - tabOpener: A Chrome extension that automatically opens a set of predefined URLs in new tabs, streamlining your browsing experience.
+- automaticScreenshots: A C++ program to take and save a screenshot every 10 minutes in a 1-hour window.
+- numberphileAmazingGraphs: Python scripts to generate "Amazing Graphs", inspired by the Numberphile series.
+- pySnake: The Legendary Snake game in Python.
+- ProbabilityExercises: Some probability exercises that helped me studying Advanced Algorithms.
+- InstagramFollowersTracker: Python scripts to track Instagram activity (outdated).
 
 Each project is designed to be standalone and showcases different aspects of programming and technology. Feel free to explore, use, or contribute to these projects!

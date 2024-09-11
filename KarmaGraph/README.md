@@ -1,3 +1,5 @@
+this was *entirely* written by chatGPT:
+
 ### Mathematical Formalization
 
 #### Definitions:

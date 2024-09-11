@@ -1,14 +1,14 @@
-### Formalizzazione Matematica
+### Mathematical Formalization
 
-#### Definizioni:
-- **Grafo Diretto \( G = (V, E) \)**: Dove \( V \) è l'insieme dei nodi e \( E \) è l'insieme degli archi orientati. Un arco \( (i, j) \in E \) indica che c'è un flusso di karma dal nodo \( i \) al nodo \( j \).
-  
-- **Karma \( k_i(t) \)**: Il punteggio di karma del nodo \( i \) al tempo \( t \).
+#### Definitions:
+- **Directed Graph \( G = (V, E) \)**: Where \( V \) is the set of nodes and \( E \) is the set of directed edges. An edge \( (i, j) \in E \) indicates a flow of karma from node \( i \) to node \( j \).
 
-- **Flusso di Karma \( f_{ij}(t) \)**: La quantità di karma trasferito dal nodo \( i \) al nodo \( j \) al tempo \( t \).
+- **Karma \( k_i(t) \)**: The karma score of node \( i \) at time \( t \).
 
-#### Regola del Trasferimento di Karma:
-Il trasferimento di karma tra due nodi \( i \) e \( j \) può essere espresso come:
+- **Karma Flow \( f_{ij}(t) \)**: The amount of karma transferred from node \( i \) to node \( j \) at time \( t \).
+
+#### Karma Transfer Rule:
+The karma transfer between two nodes \( i \) and \( j \) can be expressed as:
 
 \[
 k_j(t+1) = k_j(t) + \sum_{i \in N_j^{-}} f_{ij}(t)
@@ -17,50 +17,49 @@ k_j(t+1) = k_j(t) + \sum_{i \in N_j^{-}} f_{ij}(t)
 k_i(t+1) = k_i(t) - \sum_{j \in N_i^{+}} f_{ij}(t)
 \]
 
-Dove:
-- \( N_j^{-} \) è l'insieme dei nodi che trasferiscono karma al nodo \( j \).
-- \( N_i^{+} \) è l'insieme dei nodi verso i quali il nodo \( i \) trasferisce karma.
+Where:
+- \( N_j^{-} \) is the set of nodes transferring karma to node \( j \).
+- \( N_i^{+} \) is the set of nodes to which node \( i \) transfers karma.
 
-#### Regola del Karma Positivo in Uscita:
-Se un nodo \( i \) distribuisce costantemente una parte del proprio karma in modo positivo (cioè \( f_{ij}(t) > 0 \) per qualche \( j \) in ogni istante \( t \)), ci aspettiamo che in futuro, esso riceva più karma dagli altri nodi.
+#### Positive Outgoing Karma Rule:
+If a node \( i \) consistently distributes part of its karma positively (i.e., \( f_{ij}(t) > 0 \) for some \( j \) at every time \( t \)), it is expected to receive more karma from other nodes in the future.
 
-### Teorema del Karma Positivo
+### Positive Karma Theorem
 
-**Teorema:**
-Se un nodo \( i \) ha un karma positivo in uscita \( f_{ij}(t) > 0 \) per un insieme di nodi \( j \) lungo un periodo \( t_1, t_2, \dots, t_n \), allora, in media, il nodo \( i \) riceverà un karma positivo nel futuro.
+**Theorem:**
+If a node \( i \) has positive outgoing karma \( f_{ij}(t) > 0 \) towards a set of nodes \( j \) over a period \( t_1, t_2, \dots, t_n \), then, on average, node \( i \) will receive positive karma in the future.
 
-**Dimostrazione (Intuitiva):**
+**Intuitive Proof:**
 
-1. **Distribuzione Positiva:** Il nodo \( i \) distribuisce positivamente karma ai nodi \( j_1, j_2, \dots, j_m \).
+1. **Positive Distribution:** Node \( i \) positively distributes karma to nodes \( j_1, j_2, \dots, j_m \).
   
-2. **Accumulo di Debiti Karmici:** Ogni nodo \( j_k \) che riceve karma da \( i \) potrebbe essere incentivato a restituire parte di questo karma in futuro, specialmente se \( j_k \) è parte di un sottogruppo dove il ritorno del karma è una norma.
+2. **Accumulation of Karmic Debts:** Each node \( j_k \) receiving karma from \( i \) may be incentivized to return part of this karma in the future, especially if \( j_k \) is part of a subgroup where returning karma is the norm.
 
-3. **Rete di Interazioni:** Nella rete, i nodi sono spesso parte di circuiti o comunità, quindi un flusso positivo di karma potrebbe generare una sorta di "debito karmico" che, statisticamente, aumenta la probabilità che il nodo \( i \) riceva karma positivo da altri nodi in futuro.
+3. **Network of Interactions:** In the network, nodes are often part of circuits or communities, so positive karma flow may generate a kind of "karmic debt" that, statistically, increases the likelihood of node \( i \) receiving positive karma from other nodes in the future.
 
-4. **Aspettativa di Karma Positivo:** Formalmente, possiamo esprimere l'aspettativa del karma in entrata per il nodo \( i \) come:
+4. **Expectation of Positive Karma:** Formally, we can express the expected incoming karma for node \( i \) as:
 
 \[
-\mathbb{E}[k_i(t + \Delta t)] > 0 \text{ se } \sum_{j \in N_i^{+}} f_{ij}(t) > 0 \text{ per ogni } t \in [t_1, t_n]
+\mathbb{E}[k_i(t + \Delta t)] > 0 \text{ if } \sum_{j \in N_i^{+}} f_{ij}(t) > 0 \text{ for every } t \in [t_1, t_n]
 \]
 
-In altre parole, se il nodo \( i \) distribuisce costantemente karma positivo, l'aspettativa del karma in entrata nel futuro \( \mathbb{E}[k_i(t + \Delta t)] \) sarà positiva.
+In other words, if node \( i \) consistently distributes positive karma, the expectation of future incoming karma \( \mathbb{E}[k_i(t + \Delta t)] \) will be positive.
 
-### Considerazioni
-Questa formalizzazione si basa sull'idea che esista un ciclo di restituzione del karma (ad esempio, in reti sociali o economiche dove le interazioni sono reciprocamente benefiche). Tuttavia, è una rappresentazione semplificata e teorica. In una rete reale, molti fattori possono influenzare il flusso di karma, inclusi i cambiamenti nelle relazioni, le norme sociali, e le interazioni casuali.
+### Considerations
+This formalization is based on the idea that a cycle of karma repayment exists (e.g., in social or economic networks where interactions are mutually beneficial). However, it is a simplified and theoretical representation. In a real network, many factors can influence karma flow, including changes in relationships, social norms, and random interactions.
 
+### Model Extension: Dynamic Relationships and Social Factors
 
-### Estensione del Modello: Considerazioni su Relazioni Dinamiche e Fattori Sociali
+#### Extended Definitions:
+- **Dynamic Relationships \( E(t) \)**: The edges of the graph \( E \) may change over time, representing the instability or evolution of relationships between nodes. An edge \( (i, j) \) can appear or disappear over time, influenced by external events or individual decisions.
 
-#### Definizioni Estese:
-- **Relazioni Dinamiche \( E(t) \)**: Gli archi del grafo \( E \) possono cambiare nel tempo, rappresentando l'instabilità o l'evoluzione delle relazioni tra nodi. Un arco \( (i, j) \) può apparire o scomparire nel tempo, influenzato da eventi esterni o decisioni individuali.
+- **Social Norms \( \mathcal{N}(t) \)**: A set of expected rules or behaviors that influence how karma is transferred. For example, during one period, the social norm might encourage reciprocity, while in another period, it might encourage generosity without expecting anything in return.
 
-- **Norme Sociali \( \mathcal{N}(t) \)**: Un insieme di regole o comportamenti attesi che influenzano come il karma viene trasferito. Ad esempio, in un certo periodo, la norma sociale potrebbe incoraggiare la reciprocità, mentre in un altro periodo potrebbe incoraggiare la generosità senza aspettarsi nulla in cambio.
+- **Random Interactions \( \eta(t) \)**: Stochastic or random components that influence interactions and karma transfer. These can include fortuitous encounters, sudden changes in attitude, or external influences.
 
-- **Interazioni Casuali \( \eta(t) \)**: Componenti stocastiche o casuali che influenzano le interazioni e il trasferimento di karma. Questi possono includere incontri fortuiti, cambiamenti improvvisi di atteggiamento, o influenze esterne.
+#### Modified Karma Transfer Rule:
 
-#### Modifica della Regola del Trasferimento di Karma:
-
-Introduciamo un termine di variazione per rappresentare le influenze di questi fattori:
+We introduce a variation term to represent the influence of these factors:
 
 \[
 k_j(t+1) = k_j(t) + \sum_{i \in N_j^{-}(t)} \left( f_{ij}(t) + \eta_{ij}(t) \right)
@@ -69,41 +68,41 @@ k_j(t+1) = k_j(t) + \sum_{i \in N_j^{-}(t)} \left( f_{ij}(t) + \eta_{ij}(t) \rig
 k_i(t+1) = k_i(t) - \sum_{j \in N_i^{+}(t)} \left( f_{ij}(t) + \eta_{ij}(t) \right)
 \]
 
-Dove:
-- \( N_j^{-}(t) \) e \( N_i^{+}(t) \) sono rispettivamente l'insieme dei nodi che trasferiscono karma al nodo \( j \) e l'insieme dei nodi verso i quali il nodo \( i \) trasferisce karma, in funzione del tempo.
-- \( \eta_{ij}(t) \) è un termine che rappresenta l'influenza casuale o stocastica nell'interazione tra \( i \) e \( j \) al tempo \( t \).
+Where:
+- \( N_j^{-}(t) \) and \( N_i^{+}(t) \) are, respectively, the set of nodes transferring karma to node \( j \) and the set of nodes to which node \( i \) transfers karma, as a function of time.
+- \( \eta_{ij}(t) \) is a term representing random or stochastic influence in the interaction between \( i \) and \( j \) at time \( t \).
 
-#### Modifica della Regola del Karma Positivo in Uscita:
+#### Modified Positive Outgoing Karma Rule:
 
-Includendo la dinamica delle relazioni e le norme sociali, possiamo riformulare l'aspettativa del karma in entrata:
+Incorporating dynamic relationships and social norms, we can reformulate the expectation of incoming karma:
 
 \[
 \mathbb{E}[k_i(t + \Delta t)] \approx \sum_{j \in N_i^{+}(t)} \left( f_{ij}(t) + \eta_{ij}(t) \right) \cdot \mathcal{N}_{ij}(t) > 0
 \]
 
-Dove:
-- \( \mathcal{N}_{ij}(t) \) è un fattore che modula il trasferimento di karma in base alle norme sociali prevalenti tra \( i \) e \( j \) al tempo \( t \).
+Where:
+- \( \mathcal{N}_{ij}(t) \) is a factor modulating karma transfer based on the prevailing social norms between \( i \) and \( j \) at time \( t \).
 
-### Teorema Esteso del Karma Positivo
+### Extended Positive Karma Theorem
 
-**Teorema (Esteso):**
-Se un nodo \( i \) distribuisce un karma positivo \( f_{ij}(t) > 0 \) verso un insieme di nodi \( j \) lungo un periodo \( t_1, t_2, \dots, t_n \), e se le norme sociali favoriscono la reciprocità e/o le relazioni sono stabili, allora, in media, il nodo \( i \) riceverà un karma positivo nel futuro, nonostante la presenza di interazioni casuali e dinamiche delle relazioni.
+**Theorem (Extended):**
+If a node \( i \) distributes positive karma \( f_{ij}(t) > 0 \) towards a set of nodes \( j \) over a period \( t_1, t_2, \dots, t_n \), and if social norms favor reciprocity and/or relationships are stable, then, on average, node \( i \) will receive positive karma in the future, despite the presence of random interactions and dynamic relationships.
 
-**Dimostrazione (Intuitiva):**
+**Intuitive Proof:**
 
-1. **Distribuzione Positiva e Norme Sociali:** Il nodo \( i \) distribuisce karma positivamente. Se le norme sociali \( \mathcal{N}_{ij}(t) \) favoriscono la reciprocità, i nodi \( j \) saranno incentivati a restituire parte del karma ricevuto, specialmente in un contesto di relazioni stabili.
+1. **Positive Distribution and Social Norms:** Node \( i \) distributes karma positively. If social norms \( \mathcal{N}_{ij}(t) \) favor reciprocity, nodes \( j \) will be incentivized to return part of the karma received, especially in a context of stable relationships.
 
-2. **Relazioni Dinamiche:** Anche se le relazioni \( E(t) \) possono cambiare, la presenza di norme sociali forti e di interazioni precedenti può mantenere una certa probabilità di restituzione del karma, poiché i nodi tendono a mantenere connessioni utili o favorevoli.
+2. **Dynamic Relationships:** Even if relationships \( E(t) \) change, strong social norms and prior interactions can maintain some probability of karma repayment, as nodes tend to maintain useful or favorable connections.
 
-3. **Interazioni Casuali:** Le componenti casuali \( \eta_{ij}(t) \) possono causare variazioni temporanee, ma su un periodo lungo e con un numero sufficiente di interazioni, l'effetto medio delle interazioni casuali tende a bilanciarsi, soprattutto se le norme sociali e le relazioni stabili predominano.
+3. **Random Interactions:** The random components \( \eta_{ij}(t) \) can cause temporary variations, but over a long period and with enough interactions, the average effect of random interactions tends to balance out, especially if strong social norms and stable relationships prevail.
 
-4. **Aspettativa di Karma Positivo:** L'aspettativa del karma in entrata per il nodo \( i \), tenendo conto delle norme sociali, delle relazioni dinamiche e delle interazioni casuali, sarà ancora positiva se il nodo continua a distribuire karma positivo in uscita in modo coerente.
+4. **Expectation of Positive Karma:** The expected incoming karma for node \( i \), taking into account social norms, dynamic relationships, and random interactions, will still be positive if the node consistently distributes positive outgoing karma.
 
 \[
-\mathbb{E}[k_i(t + \Delta t)] > 0 \text{ se } \sum_{j \in N_i^{+}(t)} f_{ij}(t) > 0 \text{ per ogni } t \in [t_1, t_n]
+\mathbb{E}[k_i(t + \Delta t)] > 0 \text{ if } \sum_{j \in N_i^{+}(t)} f_{ij}(t) > 0 \text{ for every } t \in [t_1, t_n]
 \]
 
-### Conclusioni
-Questo modello esteso riconosce che, nel mondo reale, il flusso di karma tra i nodi non è determinato solo dalle interazioni dirette e costanti, ma è anche influenzato da fattori esterni e dinamiche complesse. Le norme sociali, la stabilità delle relazioni e la casualità giocano un ruolo critico nel determinare se il karma positivo in uscita garantisce un ritorno positivo in futuro.
+### Conclusions
+This extended model recognizes that, in the real world, karma flow between nodes is not determined solely by direct and constant interactions, but is also influenced by external factors and complex dynamics. Social norms, relationship stability, and randomness play a critical role in determining whether positive outgoing karma ensures a positive return in the future.
 
-Questa formulazione più complessa è più aderente alla realtà delle reti sociali ed economiche, dove le relazioni non sono statiche e le interazioni non sono completamente prevedibili.
+This more complex formulation better aligns with the reality of social and economic networks, where relationships are not static and interactions are not entirely predictable.

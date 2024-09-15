@@ -13,5 +13,6 @@ Here’s a brief overview of the projects included:
 - pySnake: The Legendary Snake game in Python.
 - ProbabilityExercises: Some probability exercises that helped me studying Advanced Algorithms.
 - InstagramFollowersTracker: Python scripts to track Instagram activity (outdated).
+- pyPaint: a simple version of the famous Paint program, in Python.
 
 Each project is designed to be standalone and showcases different aspects of programming and technology. Feel free to explore, use, or contribute to these projects!
